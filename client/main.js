@@ -192,6 +192,9 @@ button_show.addEventListener("click", () => {
   fetch("/show")
     .then((res) => res.json()) // SAME AS waitForJSON()
     // .then((json) => console.log(json));
-    .then((json) => showAll(json, div_fave));
+    .then((json) => {
+      div_fave.innerHTML = "";
+      showAll(json, div_fave);
+    });
   // anything after fetch happens at the same time as fetch, before  .then()
 });

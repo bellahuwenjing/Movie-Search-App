@@ -5,3 +5,4 @@ draft_src
 node_modules
 .env
 myDB
+.vscode

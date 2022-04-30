@@ -2,14 +2,12 @@
   "name": "final_project",
   "version": "1.0.0",
   "description": "", 
-  "main": "client/index.js",
   "scripts": {
-    "start":  "parcel client/index.html",
+    "start":  "node client/server_db.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bella": "node client/server_db.js",
     "debug": "node --inspect=0.0.0.0:9229 client/server_db.js"
   },
-  "author": "",
+  "author": "Bella Hu",
   "license": "ISC",
   "devDependencies": {
     "parcel": "^2.4.1"
