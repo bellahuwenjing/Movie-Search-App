@@ -24,20 +24,28 @@ function handleUserSearch(data) {
 
   const html = `
     <h2>${title}</h2>
-    <p>Type: ${type} &nbsp&nbsp&nbsp Year: ${year}  &nbsp&nbsp&nbsp Rated: ${rated} &nbsp&nbsp&nbsp Runtime: ${runtime}</p>
-    <p>Genre: ${genre} &nbsp&nbsp&nbsp&nbsp Rating: ${rating} &nbsp&nbsp&nbsp Country: ${country}</p>
-    <p></p>
-    <img src="${posterImage}">
-    <p>${plot}</p>
+<table class="table table-bordered table-hover">
+  <tr>
+    <th style="width: 15%">Details</th>
+    <th style="width: 35%">Poster</th>
+    <th style="width: 50%">Plot</th>
+  </tr>
+  <tr>
+    <td>
+    <p>Type: ${type}</p>
+    <p>Year: ${year}</p>
+    <p>Rated: ${rated} </p>
+    <p>Runtime: ${runtime}</p>
+    <p>Genre: ${genre} </p>
+    <p>Rating: ${rating} </p>
+    <p>Country: ${country}</p>
+    </td>
+    <td><img src="${posterImage}" style="width:60%;height:60%;"></td>
+    <td><p>${plot}</p></td>
+  </tr>
+</table>    
     `;
   outputDiv.innerHTML = html;
-
-  // database needed to store
-  // newMovies.push({
-  //   id: id,
-  //   title: title,
-  // });
-  // console.log(newMovies);
   newMovie = { id: id, title: title };
 }
 
@@ -70,18 +78,6 @@ function display(data, where) {
   count++;
   where.innerHTML += html;
 }
-
-// const queryString = `?apikey=${apiKey}&t=${searchTerm}&plot=${plot}`;
-// const endpoint = url + queryString;
-// function getMovieData(searchTerm, displayFormat) {
-//   outputDiv.innerHTML = "<p>Loading...</p>";
-//   if (displayFormat === 3) {
-//     fetch(endpoint).then(waitForJSON).then(display);
-//   }
-//   if (displayFormat === 11) {
-//     fetch(endpoint).then(waitForJSON).then(handleUserSearch);
-//   }
-// }
 
 function getMovieData(searchTerm, displayFormat, where) {
   let queryString = "";
@@ -119,20 +115,13 @@ function onFormSubmit(event) {
 form.addEventListener("submit", onFormSubmit); //enter in the last input in the form
 
 const button_en = document.querySelector("#show_en");
-// function showAll() {
-//     console.log("clicked")
-//     englishMovies.forEach(movie => {
-//         getMovieData(movie.id)
-//     })
-// }
-// button_en.addEventListener("click", showAll)
 
 function showAll(list, where) {
   list.forEach((movie) => {
     getMovieData(movie.id, 3, where);
   });
 }
-// button_en.addEventListener("click", showAll(englishMovies)) // DOESN'T WORK!!!
+
 const div_en = document.querySelector("#english");
 button_en.addEventListener("click", (event) => {
   div_en.innerHTML = "";
@@ -145,19 +134,6 @@ button_ch.addEventListener("click", () => {
   div_ch.innerHTML = "";
   showAll(chineseMovies, div_ch);
 });
-
-// code by Mike
-// button_add.addEventListener("click", () => {
-//   let xhr = new XMLHttpRequest();
-//   xhr.open("POST", "added");
-
-//   xhr.setRequestHeader("Accept", "application/json");
-//   xhr.setRequestHeader("Content-Type", "application/json");
-
-//   xhr.onload = () => {
-//     console.log(xhr.responseText);
-//   };
-// });
 
 // https://www.geeksforgeeks.org/get-and-post-method-using-fetch-api/
 // The difference between XMLHttpRequest and fetch is that fetch uses Promises which are easy to
@@ -180,10 +156,6 @@ button_add.addEventListener("click", () => {
       "Content-type": "application/json; charset=UTF-8",
     },
   }).then((json) => console.log(json));
-  //   // Converting to JSON
-  //   .then((response) => response.json())   //ERROR:
-  //   // Displaying results to console
-  //   .then((json) => console.log(json));
 });
 
 const button_show = document.querySelector("#show");
