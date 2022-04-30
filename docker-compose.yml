@@ -1,0 +1,13 @@
+version: '3'
+services:
+  nodejs16:
+    image: node:16
+    working_dir: /usr/src/service
+    stdin_open: true
+    # command: "bash -c 'npm install && npm start'"
+    volumes:
+      - ./:/usr/src/service
+    ports:
+      - 8080:8080
+      - 1234:1234
+      - 9229:9229

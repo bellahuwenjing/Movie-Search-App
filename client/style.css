@@ -1,0 +1,12 @@
+#wrapper {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #b3c7e6;
+}
+
+
+/* NOT REALLY WORKING, WHY??? */
+h6.mb-0 {
+    text-align: left;  
+}

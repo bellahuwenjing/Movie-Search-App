@@ -1,0 +1,7 @@
+.parcel-cache
+.cache
+dist
+draft_src
+node_modules
+.env
+myDB
